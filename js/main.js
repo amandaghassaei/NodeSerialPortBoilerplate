@@ -12,6 +12,11 @@ $(function() {
 
         console.log("connected");
 
+        $("#refreshPorts").click(function(e){
+            e.preventDefault();
+            socket.emit("refreshPorts");
+        });
+
         if (data.portName) $("#portName").html(data.portName);
         if (data.baudRate) $("#baudRate").html(data.baudRate);
         if (data.availablePorts && data.availablePorts.length>0){
