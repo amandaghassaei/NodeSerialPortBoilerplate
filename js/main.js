@@ -7,15 +7,15 @@ $(function() {
 
     var socket = io.connect('http://localhost:8080');
 
+    $("#refreshPorts").click(function(e){
+        e.preventDefault();
+        socket.emit("refreshPorts");
+    });
+
     //bind events
     socket.on('connected', function(data){
 
         console.log("connected");
-
-        $("#refreshPorts").click(function(e){
-            e.preventDefault();
-            socket.emit("refreshPorts");
-        });
 
         if (data.portName) $("#portName").html(data.portName);
         if (data.baudRate) $("#baudRate").html(data.baudRate);
